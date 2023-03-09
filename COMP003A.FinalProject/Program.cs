@@ -58,9 +58,10 @@ namespace COMP003A.FinalProject
                     Console.WriteLine("Corvis: You think I look stupid or somethin? Let's try this again.");
                 }
             }
-            while(true)
+            Console.WriteLine($"Corvis: It's hard to get a read on ya, with those rags your wearin I can't even tell if your a lad or a lady.");
+            while (true)
             {
-                Console.Write($"Corvis: ");
+                Console.Write($"Corvis: What's your gender? (Enter M, F, or O)");
                 char genderInput = Convert.ToChar(Console.ReadLine());
             }
             
