@@ -5,6 +5,7 @@
  * 
  */
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace COMP003A.FinalProject
 {
@@ -12,67 +13,82 @@ namespace COMP003A.FinalProject
     {
         static void Main(string[] args)
         {
-            while (true)
-            {
-                Console.Write("Corvis: What is your given name? ");
-                string firstName = Console.ReadLine();
-                if(checkName(firstName))
-                {
-                    Console.WriteLine($"Corvis: Ah {firstName} is a fine name indeed.");
-                        break;
-                }
-                else
-                {
-                    Console.WriteLine("What foreign tongue is that? I'm gonna need it my language this time.");
-                }
-            }
-
-            while (true)
-            {
-                Console.Write("Corvis: What is your family name? ");
-                string lastName = Console.ReadLine();
-                if (checkName(lastName))
-                {
-                    Console.WriteLine($"Corvis: {lastName}? Can't say I've heard a name like that in my extensive lifetime.");
-                        break;
-                }
-                else
-                {
-                    Console.WriteLine("What foreign tongue is that? I'm gonna need it my language this time.");
-                }
-            }
-
+            string firstName;
+            string lastName;
+            string birthYearWord;
+            string gender;
             int age;
-            while(true)
-            {
-                Console.Write("Corvis: What year were you born? ");
-                int birthYear = Convert.ToInt16(Console.ReadLine());
-                if(checkBirthYear(birthYear))
-                {
-                    age = 2023 - birthYear;
-                    Console.WriteLine($"Corvis: {age} this year huh...");
-                        break;
-                }
-                else
-                {
-                    Console.WriteLine("Corvis: You think I look stupid or somethin? Let's try this again.");
-                }
-            }
-            Console.WriteLine($"Corvis: It's hard to get a read on ya, with those rags your wearin I can't even tell if your a lad or a lady.");
-            while (true)
-            {
-                Console.Write($"Corvis: What's your gender? (Enter M, F, or O)");
-                char genderInput = Convert.ToChar(Console.ReadLine());
-            }
+            int birthYear;
             
 
+            firstName = wordAnswerLoop("Dagoth: What is your given name?: ");
+            lastName = wordAnswerLoop("Dagoth: What is your family name?: ");
+            if(firstName == lastName)
+            {
+                Console.WriteLine($"Dagoth: {firstName} {lastName}? What kinda name is that? Your parents are bloody loons!  ");
+            }
+
+            do
+            {
+                birthYearWord = numberAnswerLoop("Dagoth: What year were you born?: ");
+                birthYear = Convert.ToInt16(birthYearWord);
+            } while (!checkBirthYear(birthYear));
+            age = 2023 - birthYear;
+            
+            
+            
+
+        }
+        /// <summary>
+        /// Continues a loop until answer is acceptable
+        /// </summary>
+        /// <param name="question">string input</param>
+        /// <returns></returns>
+        static string wordAnswerLoop(string question)
+        {
+            string answer;
+            while (true)
+            {
+                Console.Write(question);
+                answer = Console.ReadLine();
+                if (checkWord(answer))
+                {
+                    return answer;
+                }
+                else
+                {
+                    Console.WriteLine("What foreign tongue is that? I'm gonna need it my language this time.");
+                }
+            }
+        }
+        /// <summary>
+        /// Loops until number is given
+        /// </summary>
+        /// <param name="question">string Input</param>
+        /// <returns></returns>
+        static string numberAnswerLoop(string question)
+        {
+            string number;
+            while (true)
+            {
+                Console.Write(question);
+                number = Console.ReadLine();
+                if (checkNumber(number))
+                {
+                    return number;
+                }
+                else
+                {
+                    Console.WriteLine("Oi! I asked for a number not whatever hell it is you gave me!");
+                }
+            }
         }
         /// <summary>
         /// Checks name input for incorrect inputs
         /// </summary>
         /// <param name="name">String Input</param>
         /// <returns></returns>
-        static bool checkName(string name)
+        static bool checkWord(string name)
         {
             string pattern = "^[A-Za-z]+$";
             if (Regex.IsMatch(name, pattern))
@@ -82,6 +98,23 @@ namespace COMP003A.FinalProject
             else
             { 
                 return false; 
+            }
+        }
+        /// <summary>
+        /// Checks if the input is a number
+        /// </summary>
+        /// <param name="number">string input</param>
+        /// <returns></returns>
+        static bool checkNumber(string number)
+        {
+            string pattern = "^[0-9]+$";
+            if (Regex.IsMatch(number, pattern))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         /// <summary>
@@ -97,14 +130,10 @@ namespace COMP003A.FinalProject
             }
             else
             {
+                Console.WriteLine("Dagoth: Do you take me for a fool? That's impossible! Let's try this again.");
                 return false;
             }
         }
-
-
-
-
-
 
     }
 }
