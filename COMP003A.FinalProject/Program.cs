@@ -5,6 +5,7 @@
  * 
  */
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -15,17 +16,15 @@ namespace COMP003A.FinalProject
     {
         static void Main(string[] args)
         {
-            string interpolLevel;
             string firstName; string lastName; string birthYearWord; string gender;
             string species; string hairColor; string eyeColor; string heightWord; string weightWord;
             string hometown; string fightYears; string allegianceWord; string weapon; string fighterType;
-            char genderLetter; char allegiance; 
-            int age; int birthYear; int height; int weight; int timeYears; int interpolSpeed = 26;
+            char genderLetter; char allegiance;
+            int age; int birthYear; int height; int weight; int timeYears; int interpolSpeed = 26; int count; int timer;
+            
 
-
-            /*Console.WriteLine(""); wait();*/
             Console.ForegroundColor = ConsoleColor.Yellow;
-            interpolNext("Choose a text speed, [S], [N], [F], or [J]  (Slow, Normal, Fast, or Jump): ", interpolSpeed);
+            interpol("Choose a text speed, [S], [N], [F], or [J]  (Slow, Normal, Fast, or Jump): ", interpolSpeed);
             while (interpolSpeed == 26)
             {
                 switch (Console.ReadKey(true).Key)
@@ -45,46 +44,133 @@ namespace COMP003A.FinalProject
                 }
             }
             Console.WriteLine();
+            /*
+            interpol("Welcome to Araevell Kingdom! (Press [Spacebar] to skip to the end of text, [Enter] Key to continue)", interpolSpeed); wait();
+            interpol("Here, you will create a fictional character based on your preferred characteristics, whether they be fictional or not.", interpolSpeed); wait();
+            interpol("The story begins after you wake up with amnesia.", interpolSpeed); wait();
+            interpol("The beckoning sunlight awakens you. Its color tainted red by stained-glass windows.", interpolSpeed); wait();
+            interpol("Pain surges from the back of your skull, as each throb hits you like the beat of a drum.", interpolSpeed); wait();
+            interpol("(Press [S] to sit up)", interpolSpeed);
+            while (true) { if (Console.ReadKey(true).Key == ConsoleKey.S) { break; } }
+            Console.WriteLine(); //Wait for S key
+            interpol("You sit up on the wooden bench you’ve made your bed. The lumber groans an awful creak as you pull yourself up.", interpolSpeed); wait();
+            interpol("How did you get here? ", interpolSpeed); wait();
+            interpol("The stained-glass and the arrangement of the benches give the impression of some religious temple.", interpolSpeed); wait();
+            interpol("But, Why are you here?", interpolSpeed); wait();
+            interpol("There are rows of the stone men, each standing before a stained-glass portrait.", interpolSpeed); wait();
+            interpol("The closest statue clutching a great sword, the point piercing the ground below. His stone grip ensnared the sapphire-set pommel and the other laid upon the shagreen handle. Once a zealot for the gods of this temple, no doubt.", interpolSpeed); wait();
+            interpol("Did the gods of those same gods guide you here? ", interpolSpeed); wait();
+            interpol("You don’t have time, you must hurry.", interpolSpeed); wait();
+            interpol("Hurry? What for?", interpolSpeed); wait();
+            interpol("You can't seem to remember.", interpolSpeed); wait();
+            interpol("The sudden sound of wood grinding on stone catches your attention.", interpolSpeed); wait();
+            interpol("You turn to see one of the colossal doors, meant for humans and giants alike, slowly being pushed by a man merely a fifth of the size", interpolSpeed); wait();
+            interpol("He begins to stagger toward you.", interpolSpeed); wait();
+            interpol("Unknown: \"HEY... grrgh\"", interpolSpeed); wait();
+            interpol("As he writhes in pain, you wonder who the man is. You don't recall ever meeting him before.", interpolSpeed); wait();
+            interpolSame("Unknown: \"I see you've...", interpolSpeed); Thread.Sleep(500); interpolSame(" grrgh...", interpolSpeed); Thread.Sleep(500); interpol("made it here in one piece.\"", interpolSpeed); wait();
+            interpol("(Press [Space] to stand)", interpolSpeed);
+            while (true) { if (Console.ReadKey(true).Key == ConsoleKey.Spacebar) { break; } } Console.WriteLine(); //Wait for Spacebar
+            interpolSame("*THUMP*", interpolSpeed); Thread.Sleep(500); interpol("The great hall echoes as you drop back to the seat with a thud.", interpolSpeed); wait();
+            interpol("Your tattered limbs resist. Throbbing pain lives where muscles once did.", interpolSpeed); wait();
+            interpol("You must get up! What if that man is an enemy?", interpolSpeed); wait();
+            interpolSame("A BATTLE!", interpolSpeed); Thread.Sleep(500); interpol("The sudden pain and urgency bring back a piece of your memory", interpolSpeed); wait();
+            interpol("But now's not the time you must stand!", interpolSpeed); wait();
+            interpol("(PRESS [Spacebar] 10 times before he reaches you!)", interpolSpeed);
+            count = 0;
+            timer = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                do
+                {
+                    while (!Console.KeyAvailable)
+                    {
+                        Thread.Sleep(1);
+                        timer++;
+                        switch (timer)
+                        {
+                            case 200:
+                                interpol("\nHe's half way there!", interpolSpeed);
+                                break;
+                            case 400:
+                                interpol("\nYou failed to reach your feet in time.", interpolSpeed); wait();
+                                interpol("Unknown: \"Can't stand? Guess they did you in worse than I thought.\"", interpolSpeed); wait();
+                                i = 10;
+                                break;
+                        }
+                        if (timer > 399) { break; }
+                    }
+                    if (timer > 399) { break; }
+                } while (Console.ReadKey(true).Key != ConsoleKey.Spacebar);
+                count++;
+            }
+            if (count == 10)
+            {
+                interpol("\nYou lurch to your feet preparing to defend yourself from the stranger teetering closer to your position.", interpolSpeed); wait();
+                interpol("Unknown: \"Whoah! you look bloody well ready for a fight!\"", interpolSpeed); wait();
+            }
+            else
+            {
+                interpol("Unknown: \"Here, I'll help you to your feet.\"", interpolSpeed); wait();
+                interpol("He grabs your arm and wrenches your upward", interpolSpeed); wait();
+            }
+            */
 
-            interpolNext("Welcome to Araevell Kingdom! (Press [Spacebar] to skip to the end of text, [Enter] Key to continue)", interpolSpeed); wait();
-            interpolNext("Here, you will create a fictional character based on your preferred characteristics, whether they be fictional or not.", interpolSpeed); wait();
-            interpolNext("The story begins when you wake up with amnesia.", interpolSpeed); wait();
-            interpolNext("The beckoning sunlight awakens you. Its color tainted red by stained-glass windows. (Press S to sit up)", interpolSpeed);
-            while(true) { if (Console.ReadKey(true).Key == ConsoleKey.S) { break; }  } Console.WriteLine(); //Wait for S key
-            interpolNext("You sit up on the wooden bench that you’ve made your bed. The lumber groans an awful creak as you pull yourself up.", interpolSpeed); wait();
-            interpolNext("How did you get here? ", interpolSpeed); wait();
-            interpolNext("The stained-glass and the arrangement of the benches give the impression of some religious temple.", interpolSpeed); wait();
-            interpolNext("But, Why are you here?", interpolSpeed); wait();
-            interpolNext("The presence of the stone men, standing before each stained-glass portrait, sends a chill down your spine", interpolSpeed); wait();
-            interpolNext("Did the gods of this temple guide you here? ", interpolSpeed); wait();
-            interpolNext("You don’t have time, you must hurry.", interpolSpeed); wait();
-            interpolNext("", interpolSpeed); wait();
-            interpolNext("", interpolSpeed); wait();
-            interpolNext("", interpolSpeed); wait();
-            interpolNext("", interpolSpeed); wait();
-            interpolNext("", interpolSpeed); wait();
+            interpol("Unknown: \"What's that look in your eye for? Don't you remember me?\n We've been fightin' together for a damned fortnite!\"", interpolSpeed); wait();
+            interpol("You: \"...\"", interpolSpeed); wait();
+            interpol("Unknown: \"Name's Dagoth, bloody nice to meet you. You may not who I am, but I sure as hell know who you are.\"", interpolSpeed); wait();
+            interpol("He extends his hand to shake yours", interpolSpeed); wait();
+            interpol("(Press [E] to shake his hand)", interpolSpeed);
+            timer = 0;
+            do
+            {
+                while (!Console.KeyAvailable)
+                {
+                    Thread.Sleep(1);
+                    timer++;
+                    switch (timer)
+                    {
+                        case 200:
+                            interpol("\nHis out-stretched hand begins to wobble as you stare at it with distrusting eyes.", interpolSpeed);
+                            break;
+                        case 400:
+                            interpol("\nHe finally succumbs to the social pressure of being denied a handshake.", interpolSpeed); wait();
+                            interpol("Dagoth: \"Not the most likeable person are you?\"", interpolSpeed); wait();
+                            break;
+                    }
+                    if (timer > 399) { break; }
+                }
+                if (timer > 399) { break; }
+                Console.WriteLine();
+                interpol("You reach for his hand and shake.", interpolSpeed); wait();
+            } while (Console.ReadKey(true).Key != ConsoleKey.E);
 
-            firstName = wordAnswerLoop("Dagoth: \"What is your given name?\"", "Dagoth: \"What foreign tongue is that? I'm gonna need it my language this time.\"", interpolSpeed);
+            interpol("Dagoth: \"Well? It's only nice to give your own name after I gave mine.\"", interpolSpeed); wait();
+
+            /*-----------------------------------------------------------------------Beginning of the assignment-----------------------------------------------------------------------------------*/
+
+            firstName = wordAnswerLoop("Dagoth: \"What is your first name?\"", "Dagoth: \"What foreign tongue is that? I'm gonna need it my language this time.\"", interpolSpeed);
+
             lastName = wordAnswerLoop("Dagoth: \"What is your family name?\"", "Dagoth: \"What foreign tongue is that? I'm gonna need it my language this time.\"", interpolSpeed);
-            if(firstName == lastName) { interpolNext($"Dagoth: \"{firstName} {lastName}? What kinda name is that? Your parents are bloody loons!\" ", interpolSpeed); }
-            
-            
+            if (firstName == lastName) { interpol($"Dagoth: \"{firstName} {lastName}? What kinda name is that? Your parents are bloody loons!\" ", interpolSpeed); }
+
+
             do
             {
                 birthYearWord = numberAnswerLoop("Dagoth: \"What year were you born?\"", interpolSpeed);
                 birthYear = Convert.ToInt16(birthYearWord);
             } while (!checkBirthYear(birthYear, interpolSpeed));
             age = DateTime.Now.Year - birthYear;
-            
-            interpolNext("Dagoth: \"And I hope I don’t have to remind ya about your gender\"", interpolSpeed);
+
+            interpol("Dagoth: \"And I hope I don’t have to remind ya about your gender\"", interpolSpeed);
 
             genderLetter = checkGender(interpolSpeed);
             gender = Convert.ToString(genderLetter);
-            
+
             species = wordAnswerLoop("Dagoth: \"Who are your peoples?\" (Species: Ex. Human, Elf, Orc, Giant, etc.)", "Dagoth: \"Never heard o' them before, I think your lyin'.\"", interpolSpeed);
             hairColor = wordAnswerLoop("Dagoth: \"Your hair color… you don’t see many people around here with… that color. What was it called again?\"", "Dagoth: \"No, no that's not it, it was somethin' else.\"", interpolSpeed);
             eyeColor = wordAnswerLoop("Dagoth: \"Well, the color of your eyes are… it’s hard to see with this little light. What color are those?\" ", "Dagoth: \"No, no that's not it, it was somethin' else.\"", interpolSpeed);
-            interpolNext($"Dagoth: \"{eyeColor}… I see it now. Hey now that we are standing eye to eye, it seems that you’re a wee bit taller than me.\"", interpolSpeed);
+            interpol($"Dagoth: \"{eyeColor}… I see it now. Hey now that we are standing eye to eye, it seems that you’re a wee bit taller than me.\"", interpolSpeed);
             heightWord = numberAnswerLoop("Dagoth: \"What is your height? In inches of course.\"", interpolSpeed);
             height = Convert.ToInt16(heightWord);
             weightWord = numberAnswerLoop("Dagoth: \"How much do you weigh in pounds?\"", interpolSpeed);
@@ -97,16 +183,16 @@ namespace COMP003A.FinalProject
             allegianceWord = Convert.ToString(allegiance);
             if (allegiance == 'k' || allegiance == 'K')
             {
-                interpolNext($"Dagoth: \"I knew you were a Kreotian through and through! The blood of the Shukiar still lay on your bare hands! Those ravenous dogs deserved what they wrought! You killed so many that nobody would dare question your allegiance. We shall stamp out this bloody rebellion together, {firstName}.\"", interpolSpeed);
+                interpol($"Dagoth: \"I knew you were a Kreotian through and through! The blood of the Shukiar still lay on your bare hands! Those ravenous dogs deserved what they wrought! You killed so many that nobody would dare question your allegiance. We shall stamp out this bloody rebellion together, {firstName}.\"", interpolSpeed);
             }
             else if (allegiance == 's' || allegiance == 'S')
             {
-                interpolNext($"Dagoth: \"Aye... could tell by your passion on the battlefield that you were a true ally to our cause. The Shukiar welcome you back into our midst. The Kreotian people shall not hold power while we still draw breath! {firstName}, we shall crush this cruel empire under our boot.\"", interpolSpeed);
+                interpol($"Dagoth: \"Aye... could tell by your passion on the battlefield that you were a true ally to our cause. The Shukiar welcome you back into our midst. The Kreotian people shall not hold power while we still draw breath! {firstName}, we shall crush this cruel empire under our boot.\"", interpolSpeed);
             }
-            
+
             weapon = wordAnswerLoop("Dagoth: \"What is your weapon?\"", "Dagoth: \"No, no that wasn't it. It was something more elegant than that.\"", interpolSpeed);
             fighterType = wordAnswerLoop($"Dagoth: \"Judging by your weapon, the {weapon}, you must be a... uh... a...\"", "Dagoth: \"Did you come up with that fighting style yourself? Compare it to something I would know.\"", interpolSpeed);
-            
+
 
         }
         /*----------------------------------------------------------------- Method Section --------------------------------------------------------------------------------------------------------------------*/
@@ -120,7 +206,7 @@ namespace COMP003A.FinalProject
             string answer;
             while (true)
             {
-                interpol(question + "\nYou: ", interpolSpeed);
+                interpolSame(question + "\nYou: ", interpolSpeed);
                 answer = Console.ReadLine();
                 if (checkWord(answer))
                 {
@@ -128,7 +214,7 @@ namespace COMP003A.FinalProject
                 }
                 else
                 {
-                    interpolNext(error, interpolSpeed);
+                    interpol(error, interpolSpeed);
                 }
             }
         }
@@ -142,7 +228,7 @@ namespace COMP003A.FinalProject
             string number;
             while (true)
             {
-                interpol(question + "\nYou: ", interpolSpeed);
+                interpolSame(question + "\nYou: ", interpolSpeed);
                 number = Console.ReadLine();
                 if (checkNumber(number))
                 {
@@ -150,7 +236,7 @@ namespace COMP003A.FinalProject
                 }
                 else
                 {
-                    interpolNext("Dagoth: \"Bloody hell! I asked for a number! Do you need me to ask louder?\"", interpolSpeed);
+                    interpol("Dagoth: \"Bloody hell! I asked for a number! Do you need me to ask louder?\"", interpolSpeed);
                 }
             }
         }
@@ -167,8 +253,8 @@ namespace COMP003A.FinalProject
                 return true;
             }
             else
-            { 
-                return false; 
+            {
+                return false;
             }
         }
         /// <summary>
@@ -213,13 +299,13 @@ namespace COMP003A.FinalProject
         /// <returns>bool output</returns>
         static bool checkBirthYear(int birthYear, int interpolSpeed)
         {
-            if (birthYear >= 1900 && birthYear <= 2023) 
-            { 
+            if (birthYear >= 1900 && birthYear <= 2023)
+            {
                 return true;
             }
             else
             {
-                interpolNext("Dagoth: \"Do you take me for a fool? That's impossible! Let's try this again.\"", interpolSpeed);
+                interpol("Dagoth: \"Do you take me for a fool? That's impossible! Let's try this again.\"", interpolSpeed);
                 return false;
             }
         }
@@ -244,16 +330,16 @@ namespace COMP003A.FinalProject
                     }
                     else
                     {
-                        interpolNext("Dagoth: \"You dont have to lie about it. Just tell me what you are.\"", interpolSpeed);
+                        interpol("Dagoth: \"You dont have to lie about it. Just tell me what you are.\"", interpolSpeed);
                     }
                 }
                 else
                 {
-                    interpolNext("Dagoth: \"You dont have to lie about it. Just tell me what you are.\"", interpolSpeed);
+                    interpol("Dagoth: \"You dont have to lie about it. Just tell me what you are.\"", interpolSpeed);
                 }
             }
-        }    
-        
+        }
+
         /// <summary>
         /// Checks if the input is k or s
         /// </summary>
@@ -270,17 +356,17 @@ namespace COMP003A.FinalProject
                     allegianceWord = allegianceWord.ToLower();
                     if (allegianceWord == "k" || allegianceWord == "s")
                     {
-                         allegiance = Convert.ToChar(allegianceWord);
-                         return allegiance;
+                        allegiance = Convert.ToChar(allegianceWord);
+                        return allegiance;
                     }
                     else
                     {
-                        interpolNext("Dagoth: \"I'm not jokin' around. Tell me, seriously\"", interpolSpeed);
+                        interpol("Dagoth: \"I'm not jokin' around. Tell me, seriously\"", interpolSpeed);
                     }
                 }
                 else
                 {
-                    interpolNext("Dagoth: \"I'm not jokin' around. Tell me, seriously\"", interpolSpeed);
+                    interpol("Dagoth: \"I'm not jokin' around. Tell me, seriously\"", interpolSpeed);
                 }
             }
 
@@ -299,7 +385,7 @@ namespace COMP003A.FinalProject
         /// prints each letter in the string, then enters next line
         /// </summary>
         /// <param name="sentence">string input</param>
-        static void interpolNext(string sentence, int speed)
+        static void interpol(string sentence, int speed)
         {
             do
             {
@@ -314,7 +400,7 @@ namespace COMP003A.FinalProject
                         }
                         else
                         {
-                            System.Threading.Thread.Sleep(speed);
+                            Thread.Sleep(speed);
                         }
                     }
                     break;
@@ -327,7 +413,7 @@ namespace COMP003A.FinalProject
         /// prints each letter in the string
         /// </summary>
         /// <param name="sentence">string input</param>
-        static void interpol(string sentence, int speed)
+        static void interpolSame(string sentence, int speed)
         {
             do
             {
@@ -342,7 +428,7 @@ namespace COMP003A.FinalProject
                         }
                         else
                         {
-                            System.Threading.Thread.Sleep(speed);
+                            Thread.Sleep(speed);
                         }
                     }
                     break;
@@ -365,4 +451,4 @@ namespace COMP003A.FinalProject
                 }
         */
     }
-    }
+}
