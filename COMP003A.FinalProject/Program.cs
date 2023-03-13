@@ -19,7 +19,7 @@ namespace COMP003A.FinalProject
             string firstName; string lastName; string gender;
             char skip = '㋛';
             int age; int birthYear; int height; int weight; int fightYears; int interpolSpeed = 11; int count; int timer;
-            
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             interpol("Choose a text speed, [S], [N], [F], or [J]  (Slow, Normal, Fast, or Jump): ", interpolSpeed);
             while (interpolSpeed == 11)
@@ -44,6 +44,7 @@ namespace COMP003A.FinalProject
             
             interpol("Welcome to Araevell Kingdom! (When \"->\" appears click [Enter] Key to continue)", interpolSpeed); wait();
             interpol("(Press [Spacebar] to skip to the end of text)", interpolSpeed); wait();
+            interpol("Maximize window for best experience. (I'll fix it later lol)", interpolSpeed); wait();
             interpol("Here, you will create a fictional character based on your preferred characteristics, whether they be fictional or not.", interpolSpeed); wait();
             
             //Skip to assignment.
@@ -81,24 +82,24 @@ namespace COMP003A.FinalProject
                 interpol("But, Why are you here?", interpolSpeed); wait();
                 interpol("There are rows of the stone men, each standing before a stained-glass portrait.", interpolSpeed); wait();
                 interpol("The closest statue clutching a great sword, the point piercing the ground below. His stone grip ensnared the sapphire-set pommel and the other laid upon the shagreen handle. Once a zealot for the gods of this temple, no doubt.", interpolSpeed); wait();
-                interpolSame("The plate of bronze placed below his feet read: ", interpolSpeed); Thread.Sleep(500); interpol("'Ser Barriston the Bold'", interpolSpeed); wait();
+                interpolSame("The plate of bronze placed below his feet read: ", interpolSpeed); Thread.Sleep(1000); interpol("'Ser Barriston the Bold'", interpolSpeed); wait();
                 interpol("Did the those same gods guide you here? ", interpolSpeed); wait();
                 interpol("You don’t have time, you must hurry.", interpolSpeed); wait();
                 interpol("Hurry? What for?", interpolSpeed); wait();
                 interpol("You can't seem to remember.", interpolSpeed); wait();
                 interpol("The sudden sound of wood grinding on stone catches your attention.", interpolSpeed); wait();
                 interpol("You turn to see one of the colossal doors, meant for humans and giants alike, slowly being pushed by a man merely a fifth of the size", interpolSpeed); wait();
-                interpol("He begins to stagger toward you.", interpolSpeed); wait();
+                interpol("He begins to stagger towards you.", interpolSpeed); wait();
                 interpol("Unknown: \"HEY... grrgh\"", interpolSpeed); wait();
                 interpol("As he writhes in pain, you wonder who the man is. You don't recall ever meeting him before.", interpolSpeed); wait();
                 interpolSame("Unknown: \"I see you've...", interpolSpeed); Thread.Sleep(500); interpolSame(" grrgh...", interpolSpeed); Thread.Sleep(500); interpol("made it here in one piece.\"", interpolSpeed); wait();
                 interpol("(Press [Space] to stand)", interpolSpeed);
                 while (true) { if (Console.ReadKey(true).Key == ConsoleKey.Spacebar) { break; } } Console.WriteLine(); //Wait for Spacebar
-                interpolSame("*THUMP*", interpolSpeed); Thread.Sleep(500); interpol("The great hall echoes as you drop back to the seat with a thud.", interpolSpeed); wait();
+                interpolSame("*THUMP* ", interpolSpeed); Thread.Sleep(1000); interpol("The great hall echoes as you drop back to the seat with a thud.", interpolSpeed); wait();
                 interpol("Your tattered limbs resist. Throbbing pain lives where muscles once did.", interpolSpeed); wait();
                 interpol("You must get up! What if that man is an enemy?", interpolSpeed); wait();
-                interpolSame("A BATTLE!", interpolSpeed); Thread.Sleep(500); interpol("The sudden pain and urgency bring back a piece of your memory", interpolSpeed); wait();
-                interpol("But now's not the time you must stand!", interpolSpeed); wait();
+                interpolSame("A BATTLE! ", interpolSpeed); Thread.Sleep(1000); interpol("The sudden pain and urgency bring back a piece of your memory. You were in a battle.", interpolSpeed); wait();
+                interpol("But now's not the time, you must stand!", interpolSpeed); wait();
                 interpol("(PRESS [Spacebar] 10 times before he reaches you!)", interpolSpeed);
 
                 //minigame press space 10 times before time runs out
