@@ -395,18 +395,21 @@ namespace COMP003A.FinalProject
                 }
                 if (allegiance == 'N')
                 {
-                    switch (Console.ReadKey(true).Key)
-                    {
-                        case ConsoleKey.S:
-                            allegiance = 'R';
-                            interpol("Dagoth: \"Hmm...\"", interpolSpeed); Thread.Sleep(1000); Console.WriteLine();
-                            interpol("Dagoth: \"Aye... could tell by your passion on the battlefield that you were a true ally to our cause. The Shukiar welcome you back into our midst. \nThe Kreotian people shall not hold power while we still draw breath! We shall crush this cruel empire under our boot.\"", interpolSpeed); wait();
-                            break;
-                        case ConsoleKey.K:
-                            allegiance = 'E';
-                            interpol("Dagoth: \"Hmm...\"", interpolSpeed); Thread.Sleep(1000); Console.WriteLine();
-                            interpol("Dagoth: \"I knew you were a Kreotian through and through! The blood of the Shukiar still lay on your bare hands! Those ravenous dogs deserved what they wrought! \nYou killed so many that nobody would dare question your allegiance. We shall stamp out this bloody rebellion together.\"", interpolSpeed); wait();
-                            break;
+                    while (allegiance == 'N') 
+                    { 
+
+                        interpol("Dagoth: \"Well which side has been tossing you most of your coin?\" (Choose a side: Enter [S] or [K] key. {Shukiar Rebellion or Kreoti Empire})", interpolSpeed);
+                        switch (Console.ReadKey(true).Key)
+                        {
+                            case ConsoleKey.S:
+                                allegiance = 'R';
+                                interpol("Dagoth: \"Good, the Kreotian gold won't be worth a rat's ass after we're through with their Empire.\"", interpolSpeed); wait();
+                                break;
+                            case ConsoleKey.K:
+                                allegiance = 'E';
+                                interpol("Dagoth: \"'least you got sense to take from the side that means to keep peace in the region. The Usurper, Shukiar, and his dogs deserve a traitor's death, by mercenary or not.\"", interpolSpeed); wait();
+                                break;
+                        }
                     }
                 }
             }
