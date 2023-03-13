@@ -45,8 +45,10 @@ namespace COMP003A.FinalProject
             }
             Console.WriteLine();
             /*
-            interpol("Welcome to Araevell Kingdom! (Press [Spacebar] to skip to the end of text, [Enter] Key to continue)", interpolSpeed); wait();
+            interpol("Welcome to Araevell Kingdom! (When "->" appears click [Enter] Key to continue)", interpolSpeed); wait();
+            interpol("(Press [Spacebar] to skip to the end of text)", interpolSpeed); wait();
             interpol("Here, you will create a fictional character based on your preferred characteristics, whether they be fictional or not.", interpolSpeed); wait();
+            //Skip to assignment.
             interpol("The story begins after you wake up with amnesia.", interpolSpeed); wait();
             interpol("The beckoning sunlight awakens you. Its color tainted red by stained-glass windows.", interpolSpeed); wait();
             interpol("Pain surges from the back of your skull, as each throb hits you like the beat of a drum.", interpolSpeed); wait();
@@ -114,7 +116,6 @@ namespace COMP003A.FinalProject
                 interpol("Unknown: \"Here, I'll help you to your feet.\"", interpolSpeed); wait();
                 interpol("He grabs your arm and wrenches your upward", interpolSpeed); wait();
             }
-            */
 
             interpol("Unknown: \"What's that look in your eye for? Don't you remember me?\n We've been fightin' together for a damned fortnite!\"", interpolSpeed); wait();
             interpol("You: \"...\"", interpolSpeed); wait();
@@ -144,50 +145,75 @@ namespace COMP003A.FinalProject
                 Console.WriteLine();
                 interpol("You reach for his hand and shake.", interpolSpeed); wait();
             } while (Console.ReadKey(true).Key != ConsoleKey.E);
-
-            interpol("Dagoth: \"Well? It's only nice to give your own name after I gave mine.\"", interpolSpeed); wait();
+            */
 
             /*-----------------------------------------------------------------------Beginning of the assignment-----------------------------------------------------------------------------------*/
-
+            /*interpol("Dagoth: \"Well? It's only nice to give your own name after I gave mine.\"", interpolSpeed); wait();
             firstName = wordAnswerLoop("Dagoth: \"What is your first name?\"", "Dagoth: \"What foreign tongue is that? I'm gonna need it my language this time.\"", interpolSpeed);
-
-            lastName = wordAnswerLoop("Dagoth: \"What is your family name?\"", "Dagoth: \"What foreign tongue is that? I'm gonna need it my language this time.\"", interpolSpeed);
-            if (firstName == lastName) { interpol($"Dagoth: \"{firstName} {lastName}? What kinda name is that? Your parents are bloody loons!\" ", interpolSpeed); }
-
-
+            interpol($"\nDagoth: \"Aye, {firstName} is a fine name!\"", interpolSpeed);
+            lastName = wordAnswerLoop("\nDagoth: \"What is your last name?\"", "Dagoth: \"What foreign tongue is that? I'm gonna need it my language this time.\"", interpolSpeed);
+            if (firstName == lastName) { interpol($"Dagoth: \"{firstName} {lastName}? What kinda name is that? Your parents are bloody loons!\" ", interpolSpeed); wait(); } //if last name matches first reaction
+            interpol($"Dagoth: \"\nWell alright {firstName} {lastName}, I saw you fightin' on the battlefield. A true warrior you are, born to kill.\" ", interpolSpeed); wait();
+            
+            interpol("Dagoth: \"It got me wonderin' how old you are.\" ", interpolSpeed); wait();
             do
             {
                 birthYearWord = numberAnswerLoop("Dagoth: \"What year were you born?\"", interpolSpeed);
                 birthYear = Convert.ToInt16(birthYearWord);
             } while (!checkBirthYear(birthYear, interpolSpeed));
             age = DateTime.Now.Year - birthYear;
-
-            interpol("Dagoth: \"And I hope I don’t have to remind ya about your gender\"", interpolSpeed);
-
-            genderLetter = checkGender(interpolSpeed);
-            gender = Convert.ToString(genderLetter);
-
-            species = wordAnswerLoop("Dagoth: \"Who are your peoples?\" (Species: Ex. Human, Elf, Orc, Giant, etc.)", "Dagoth: \"Never heard o' them before, I think your lyin'.\"", interpolSpeed);
-            hairColor = wordAnswerLoop("Dagoth: \"Your hair color… you don’t see many people around here with… that color. What was it called again?\"", "Dagoth: \"No, no that's not it, it was somethin' else.\"", interpolSpeed);
-            eyeColor = wordAnswerLoop("Dagoth: \"Well, the color of your eyes are… it’s hard to see with this little light. What color are those?\" ", "Dagoth: \"No, no that's not it, it was somethin' else.\"", interpolSpeed);
-            interpol($"Dagoth: \"{eyeColor}… I see it now. Hey now that we are standing eye to eye, it seems that you’re a wee bit taller than me.\"", interpolSpeed);
-            heightWord = numberAnswerLoop("Dagoth: \"What is your height? In inches of course.\"", interpolSpeed);
-            height = Convert.ToInt16(heightWord);
-            weightWord = numberAnswerLoop("Dagoth: \"How much do you weigh in pounds?\"", interpolSpeed);
-            weight = Convert.ToInt16(weightWord);
+            */
+            /* Varied resopnses to age */
+            /*if (age <= 5) { interpol($"Dagoth: \"{age} this year?! You mean to tell me your a toddler? Come off it!\" ", interpolSpeed); wait(); }
+            else if (age <= 14 && age > 5)  { interpol($"Dagoth: \"{age} this year?! Your species must age rather quick for that to be true.\" ", interpolSpeed); wait(); }
+            else if (age <= 19 && age > 14) { interpol($"Dagoth: \"{age} this year? ‘Tis a ripe age for battle!\" ", interpolSpeed); wait(); }
+            else if (age <= 39 && age > 19) { interpol($"Dagoth: \"{age} this year? The way you fought, I wouldn't doubt it. A prime age for fightin'.\" ", interpolSpeed); wait(); }
+            else if (age <= 69 && age > 39) { interpol($"Dagoth: \"{age} this year?! Aged like a fine wine, you did!\" ", interpolSpeed); wait(); }
+            else if (age <= 99 && age > 69) { interpol($"Dagoth: \"{age} this year?! I would be a great-grandsire at that age!\" ", interpolSpeed); wait(); }
+            else { interpol($"Dagoth: \"{age} this year?! I’m surprised you fight the way you do with brittle for bones.\" ", interpolSpeed); wait(); }
+            
+            interpol("Dagoth: \"And I hope I don’t have to remind ya about your gender\"", interpolSpeed); wait();  
+            gender = checkGender(interpolSpeed);
+            species = wordAnswerLoop("Dagoth: \"What is your Species?\" (Species: Ex. Human, Elf, Orc, Giant, etc.)", "Dagoth: \"Never heard o' them before, I think your lyin'.\"", interpolSpeed);
+            interpol($"Dagoth: \"Ha! A mirror could tell you as well as I. I could tell you're one o’ them {species} peoples just by the look of you.\"", interpolSpeed); wait();
+            interpol("Dagoth: \"But... your hair color... you don’t see many people around here with...that color. What was it called again?\"", interpolSpeed); wait();
+            hairColor = wordAnswerLoop("Dagoth: \"What is your hair color?\"", "Dagoth: \"No, no that's not it, it was somethin' else.\"", interpolSpeed);
+            interpol($"Dagoth: \"You rarely see one of my peoples have {hairColor} hair.\"", interpolSpeed); wait();
+            interpol("Dagoth: \"And the color of your eyes are... it’s hard to see with this little light. What color are those?\"", interpolSpeed); wait();
+            eyeColor = wordAnswerLoop("Dagoth: \"What is your eye color?\" ", "Dagoth: \"No, no that's not it, it was somethin' else.\"", interpolSpeed);
+            interpol($"Dagoth: \"{eyeColor}... I see it now. Wait, now that we are standing eye to eye, it seems that you’re a wee bit taller than me.\"", interpolSpeed); wait(); 
+            heightWord = numberAnswerLoop("Dagoth: \"What is your height? In inches of course.\"", interpolSpeed); height = Convert.ToInt16(heightWord);
+            if (height <= 22) { interpol("Dagoth: \"Nevermind I must've been seein' things I'm much taller than you\"", interpolSpeed); wait(); } //smallest recorded human
+            else { interpol($"Dagoth: \"Ah, well I’m {height - 2} inches so that would explain why I’m lookin’ up at ya.\"", interpolSpeed); wait(); }
+            weightWord = numberAnswerLoop("Dagoth: \"How much do you weigh in pounds?\"", interpolSpeed); weight = Convert.ToInt16(weightWord);
+            interpol($"Dagoth: \"I weigh 200 pounds, so there’s {Math.Abs(200 - weight)} pound difference between us.\"", interpolSpeed); wait();
+            interpol("Dagoth: \"Now I'll remember exactly what you'll look like the next time I see ya'\"", interpolSpeed); wait();
+            interpol("Dagoth: \"Many moons have past since we began fightin' together, so I still want to know more about how you became such a great warrior.\"", interpolSpeed); wait();
             hometown = wordAnswerLoop("Dagoth: \"What is the name of your hometown?\"", "Dagoth: \"Never heard of that place before, maybe you mispoke.\"", interpolSpeed);
-            fightYears = numberAnswerLoop("Dagoth: \"How many years have you been fighting this damned war?\"", interpolSpeed);
-            timeYears = Convert.ToInt16(fightYears);
-            // Switch statement
+            string hometownLower = hometown.ToLower();
+            if (hometownLower == "araevell" || hometownLower == "araevell kingdom") { interpol("Dagoth: \"I grew up in Araevell as well. This is no place for children. \nThe constant battles between the Kreoti Empire and the Shukiar Rebellion have left many without homes to return to.\"", interpolSpeed); wait(); }
+            else { interpol($"Dagoth: \"{hometown} is many leagues away from this retched place, be thankful for that. Araevell Kingdom is not a place for family and loved ones. \nThe constant battles between the Kreoti Empire and the Shukiar Rebellion have left many without homes to return to.\"", interpolSpeed); wait(); }
+            fightYears = numberAnswerLoop("Dagoth: \"How many years have you been fighting this damned war?\"", interpolSpeed); timeYears = Convert.ToInt16(fightYears);
+            if (timeYears > age)
+            {
+                while (timeYears > age)
+                {
+                    interpol($"Dagoth: \"That's not possible! You said you were {age} this year! So I'll ask you again.\"", interpolSpeed); wait();
+                    fightYears = numberAnswerLoop("Dagoth: \"How many years have you been fighting this damned war?\"", interpolSpeed); timeYears = Convert.ToInt16(fightYears);
+                }
+            }
+            else if (timeYears == age) { interpol($"Dagoth: \"{timeYears} years?! Came out the womb swingin’ eh? Much like me. \nI’ve been fightin’ so long that it feels as though I was born with a dirk in my hand. I was born in the slums of this ‘ere kingdom. That’s why I am so passionate about fighting this war. \"", interpolSpeed); wait(); }
+            else { interpol($"Dagoth: \"{timeYears} years, eh? I’ve been fightin’ so long that it feels as though I was born with a dirk in my hand. I was born in the slums of this ‘ere kingdom. That’s why I am so passionate about fighting this war.\"", interpolSpeed); wait(); }
+            */
             allegiance = checkAllegiance(interpolSpeed);
             allegianceWord = Convert.ToString(allegiance);
             if (allegiance == 'k' || allegiance == 'K')
             {
-                interpol($"Dagoth: \"I knew you were a Kreotian through and through! The blood of the Shukiar still lay on your bare hands! Those ravenous dogs deserved what they wrought! You killed so many that nobody would dare question your allegiance. We shall stamp out this bloody rebellion together, {firstName}.\"", interpolSpeed);
+            //    interpol($"Dagoth: \"I knew you were a Kreotian through and through! The blood of the Shukiar still lay on your bare hands! Those ravenous dogs deserved what they wrought! You killed so many that nobody would dare question your allegiance. We shall stamp out this bloody rebellion together, {firstName}.\"", interpolSpeed);
             }
             else if (allegiance == 's' || allegiance == 'S')
             {
-                interpol($"Dagoth: \"Aye... could tell by your passion on the battlefield that you were a true ally to our cause. The Shukiar welcome you back into our midst. The Kreotian people shall not hold power while we still draw breath! {firstName}, we shall crush this cruel empire under our boot.\"", interpolSpeed);
+             //   interpol($"Dagoth: \"Aye... could tell by your passion on the battlefield that you were a true ally to our cause. The Shukiar welcome you back into our midst. The Kreotian people shall not hold power while we still draw breath! {firstName}, we shall crush this cruel empire under our boot.\"", interpolSpeed);
             }
 
             weapon = wordAnswerLoop("Dagoth: \"What is your weapon?\"", "Dagoth: \"No, no that wasn't it. It was something more elegant than that.\"", interpolSpeed);
@@ -206,15 +232,16 @@ namespace COMP003A.FinalProject
             string answer;
             while (true)
             {
-                interpolSame(question + "\nYou: ", interpolSpeed);
+                interpolSame(question + "\n\nYou: ", interpolSpeed);
                 answer = Console.ReadLine();
+                Console.WriteLine();
                 if (checkWord(answer))
                 {
                     return answer;
                 }
                 else
                 {
-                    interpol(error, interpolSpeed);
+                    interpol(error, interpolSpeed); wait();
                 }
             }
         }
@@ -228,15 +255,16 @@ namespace COMP003A.FinalProject
             string number;
             while (true)
             {
-                interpolSame(question + "\nYou: ", interpolSpeed);
+                interpolSame(question + "\n\nYou: ", interpolSpeed);
                 number = Console.ReadLine();
                 if (checkNumber(number))
                 {
+                    Console.WriteLine();
                     return number;
                 }
                 else
                 {
-                    interpol("Dagoth: \"Bloody hell! I asked for a number! Do you need me to ask louder?\"", interpolSpeed);
+                    interpol("\nDagoth: \"Bloody hell! I asked for a positive number! Do you need me to ask louder?\"", interpolSpeed); wait();
                 }
             }
         }
@@ -273,6 +301,7 @@ namespace COMP003A.FinalProject
             {
                 return false;
             }
+            if(number < 0) { return false; }
             return true;
         }
         /// <summary>
@@ -305,7 +334,7 @@ namespace COMP003A.FinalProject
             }
             else
             {
-                interpol("Dagoth: \"Do you take me for a fool? That's impossible! Let's try this again.\"", interpolSpeed);
+                interpol("Dagoth: \"Do you take me for a fool? That's impossible! Let's try this again.\"", interpolSpeed); wait();
                 return false;
             }
         }
@@ -313,31 +342,27 @@ namespace COMP003A.FinalProject
         /// checks if gender is a character, 
         /// </summary>
         /// <returns>char output</returns>
-        static char checkGender(int interpolSpeed)
+        static string checkGender(int interpolSpeed)
         {
-            string gender;
-            char genderLetter;
-            while (true)
+            string gender = "Not";
+            interpol("Dagoth: \"What is your gender?\" ([M], [F], or [O])", interpolSpeed);
+            while (gender == "Not")
             {
-                gender = wordAnswerLoop("Dagoth: \"What is your gender?\" (M, F, or O)", "Dagoth: \"What foreign tongue is that? I'm gonna need it my language this time.\"", interpolSpeed);
-                if (checkCharacter(gender))
+                switch (Console.ReadKey(true).Key)
                 {
-                    gender = gender.ToLower();
-                    if (gender == "m" || gender == "f" || gender == "o")
-                    {
-                        genderLetter = Convert.ToChar(gender);
-                        return genderLetter;
-                    }
-                    else
-                    {
-                        interpol("Dagoth: \"You dont have to lie about it. Just tell me what you are.\"", interpolSpeed);
-                    }
-                }
-                else
-                {
-                    interpol("Dagoth: \"You dont have to lie about it. Just tell me what you are.\"", interpolSpeed);
+                    case ConsoleKey.M:
+                        gender = "Male";
+                        break;
+                    case ConsoleKey.F:
+                        gender = "Female";
+                        break;
+                    case ConsoleKey.O:
+                        gender = "Other";
+                        break;
                 }
             }
+            Console.WriteLine();
+            return gender;
         }
 
         /// <summary>
@@ -346,36 +371,54 @@ namespace COMP003A.FinalProject
         /// <returns>char output</returns>
         static char checkAllegiance(int interpolSpeed)
         {
-            string allegianceWord;
-            char allegiance;
-            while (true)
+            char allegiance = 'L';
+            interpol("Dagoth: \"Which side are you on?\" (Choose a side: Enter [S], [K], or [N] key. {Shukiar Rebellion, Kreoti Empire, or Neither})", interpolSpeed);
+            while (allegiance == 'L')
             {
-                allegianceWord = wordAnswerLoop("Dagoth: \"Which side are you on ?\" (K or S)", "Dagoth: \"I'm not jokin' around. Tell me, seriously\"", interpolSpeed);
-                if (checkCharacter(allegianceWord))
+                switch (Console.ReadKey(true).Key)
                 {
-                    allegianceWord = allegianceWord.ToLower();
-                    if (allegianceWord == "k" || allegianceWord == "s")
-                    {
-                        allegiance = Convert.ToChar(allegianceWord);
-                        return allegiance;
-                    }
-                    else
-                    {
-                        interpol("Dagoth: \"I'm not jokin' around. Tell me, seriously\"", interpolSpeed);
-                    }
+                    case ConsoleKey.S:
+                        allegiance = 'S';
+                        interpol("Dagoth: \"Hmm...\"", interpolSpeed); Thread.Sleep(1000); Console.WriteLine();
+                        interpol("Dagoth: \"Aye... could tell by your passion on the battlefield that you were a true ally to our cause. The Shukiar welcome you back into our midst. \nThe Kreotian people shall not hold power while we still draw breath! We shall crush this cruel empire under our boot.\"", interpolSpeed); wait();
+                        break;
+                    case ConsoleKey.K:
+                        allegiance = 'K';
+                        interpol("Dagoth: \"Hmm...\"", interpolSpeed); Thread.Sleep(1000); Console.WriteLine();
+                        interpol("Dagoth: \"I knew you were a Kreotian through and through! The blood of the Shukiar still lay on your bare hands! Those ravenous dogs deserved what they wrought! \nYou killed so many that nobody would dare question your allegiance. We shall stamp out this bloody rebellion together.\"", interpolSpeed); wait();
+                        break;
+                    case ConsoleKey.N:
+                        allegiance = 'N';
+                        interpol("Dagoth: \"Hmm...\"", interpolSpeed); Thread.Sleep(1000); Console.WriteLine();
+                        interpol("Dagoth: \"I didn't take you for a mercenary. A pity, if only more men like you would fight for honor rather than few gold pieces, we would have won this bloody war ages ago!\"", interpolSpeed); wait();
+                        break;
                 }
-                else
+                if (allegiance == 'N')
                 {
-                    interpol("Dagoth: \"I'm not jokin' around. Tell me, seriously\"", interpolSpeed);
+                    switch (Console.ReadKey(true).Key)
+                    {
+                        case ConsoleKey.S:
+                            allegiance = 'R';
+                            interpol("Dagoth: \"Hmm...\"", interpolSpeed); Thread.Sleep(1000); Console.WriteLine();
+                            interpol("Dagoth: \"Aye... could tell by your passion on the battlefield that you were a true ally to our cause. The Shukiar welcome you back into our midst. \nThe Kreotian people shall not hold power while we still draw breath! We shall crush this cruel empire under our boot.\"", interpolSpeed); wait();
+                            break;
+                        case ConsoleKey.K:
+                            allegiance = 'E';
+                            interpol("Dagoth: \"Hmm...\"", interpolSpeed); Thread.Sleep(1000); Console.WriteLine();
+                            interpol("Dagoth: \"I knew you were a Kreotian through and through! The blood of the Shukiar still lay on your bare hands! Those ravenous dogs deserved what they wrought! \nYou killed so many that nobody would dare question your allegiance. We shall stamp out this bloody rebellion together.\"", interpolSpeed); wait();
+                            break;
+                    }
                 }
             }
-
+            Console.WriteLine();
+            return allegiance;
         }
         /// <summary>
         /// Waits for input of any key
         /// </summary>
         static void wait()
         {
+            Console.Write("->");
             do
             { //wait
             } while (Console.ReadKey(true).Key != ConsoleKey.Enter);
