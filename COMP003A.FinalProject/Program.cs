@@ -20,7 +20,6 @@ namespace COMP003A.FinalProject
             char skip = '㋛';
             int age; int birthYear; int height; int weight; int fightYears; int interpolSpeed = 11; int count; int timer;
             
-
             Console.ForegroundColor = ConsoleColor.Yellow;
             interpol("Choose a text speed, [S], [N], [F], or [J]  (Slow, Normal, Fast, or Jump): ", interpolSpeed);
             while (interpolSpeed == 11)
@@ -329,6 +328,7 @@ namespace COMP003A.FinalProject
             interpol($"Name: {lastName}, {firstName}", interpolSpeed);
             interpol($"Age: {age}", interpolSpeed);
             interpol($"Birth Year: {birthYear}", interpolSpeed);
+            //list traversal or iteration
             for(int i=0; i < Question.Count; i++)
             {
                 interpol($"Question {i+1}: {Question[i]}", interpolSpeed);
