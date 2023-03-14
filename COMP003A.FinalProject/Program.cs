@@ -44,7 +44,7 @@ namespace COMP003A.FinalProject
             
             interpol("Welcome to Araevell Kingdom! (When \"->\" appears click [Enter] Key to continue)", interpolSpeed); wait();
             interpol("(Press [Spacebar] to skip to the end of text)", interpolSpeed); wait();
-            interpol("Maximize window for best experience. (I'll fix it later lol)", interpolSpeed); wait();
+            interpol("Maximize window for best experience.", interpolSpeed); wait();
             interpol("Here, you will create a fictional character based on your preferred characteristics, whether they be fictional or not.", interpolSpeed); wait();
             
             //Skip to assignment.
