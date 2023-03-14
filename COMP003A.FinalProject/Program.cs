@@ -641,12 +641,33 @@ namespace COMP003A.FinalProject
                 break;
             } while (Console.ReadKey(true).Key != ConsoleKey.Spacebar);
         }
-        /*
         /// <summary>
-        /// prints each letter in the string
+        /// Changes the color of the given string only
         /// </summary>
         /// <param name="sentence">string input</param>
-        static void Color(string sentence, int speed)
-        */
+        static void ColorChange(string sentence, char, color, int interpolSpeed)
+        {
+            switch(color)
+            {
+                case 'w':
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case 'g':
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break; 
+                case 'b':
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case 'c':
+                    Console.ForegroundColor = ConsoleColor.LightBlue;
+                    break;
+                case 'r':
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+            }
+            interpolSame(sentence, interpolSpeed); 
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        
     }
 }
