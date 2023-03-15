@@ -20,8 +20,7 @@ namespace COMP003A.FinalProject
             char skip = '㋛'; char theme = '㋛'; 
             int age; int birthYear; int height; int weight; int fightYears; int interpolSpeed = 11; int count; int timer;
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            interpol("Choose a text speed, [S], [N], [F], or [J]  (Slow, Normal, Fast, or Jump): ", interpolSpeed);
+            interpol("Choose a text speed: [S], [N], [F], or [J]  (Slow, Normal, Fast, or Jump) ", interpolSpeed);
             while (interpolSpeed == 11)
             {
                 switch (Console.ReadKey(true).Key)
@@ -41,20 +40,43 @@ namespace COMP003A.FinalProject
                 }
             }
             Console.WriteLine();
-            /*interpolSame("Choose a theme: ", interpolSpeed);
+            interpolSame("Choose a theme: [W] ", interpolSpeed); 
+            Console.ForegroundColor = ConsoleColor.Yellow; interpolSame("[Y] ", interpolSpeed);
+            Console.ForegroundColor = ConsoleColor.YellowGreen; interpolSame("[G] ", interpolSpeed);
+            Console.ForegroundColor = ConsoleColor.DodgerBlue; interpolSame("[B] ", interpolSpeed);
+            Console.ForegroundColor = ConsoleColor.Cyan; interpolSame("[C] ", interpolSpeed);
+            Console.ForegroundColor = ConsoleColor.Coral; interpol("[R] ", interpolSpeed);
             while (theme == '㋛')
             {
-                switch (Console.ReadKey(true).Key)
+                switch(Console.ReadKey(true).Key)
                 {
-                    case ConsoleKey.Y:
-                        skip = 'Y';
-                        break;
-                    case ConsoleKey.N:
-                        skip = 'N';
-                        break;
+                case ConsoleKey.W:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    theme = 'w';
+                    break;
+                case ConsoleKey.Y:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    theme = 'y'
+                    break;
+                case ConsoleKey.G:
+                    Console.ForegroundColor = ConsoleColor.YellowGreen;
+                    theme = 'g';
+                    break; 
+                case ConsoleKey.B:
+                    Console.ForegroundColor = ConsoleColor.DodgerBlue;
+                    theme = 'b';
+                    break;
+                case ConsoleKey.C:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    theme = 'c';
+                    break;
+                case ConsoleKey.R:
+                    Console.ForegroundColor = ConsoleColor.Coral;
+                    theme = 'r';
+                    break;
                 }
                 Console.WriteLine();
-            }*/
+            }
             
             interpol("Welcome to Araevell Kingdom! (When \"->\" appears click [Enter] Key to continue)", interpolSpeed); wait();
             interpol("(Press [Spacebar] to skip to the end of text)", interpolSpeed); wait();
@@ -655,22 +677,37 @@ namespace COMP003A.FinalProject
                 break;
             } while (Console.ReadKey(true).Key != ConsoleKey.Spacebar);
         }
-        /// <summary>
-        /// Changes the color of the given string only
-        /// </summary>
-        /// <param name="sentence">string input</param>
-        static void ChangeWordColor(string sentence, char theme, char, color, int interpolSpeed)
+        
+        
+        static void ChangeWordColor(string sentence, char theme, char color, int interpolSpeed)
         {
-            switch(color)
+            ChangeForegroundColor(fore);
+            interpolSame(sentence, interpolSpeed);
+            ChangeForegroundColor(theme);
+        }
+        
+        static void ChangeHighlight(string sentence, char theme, char fore, char back, int interpolSpeed)
+        {
+            ChangeForegroundColor(fore);
+            ChangeBackgroundColor(back);
+            interpolSame(sentence, interpolSpeed);
+            ChangeForegroundColor(theme);
+            ChangeBackgroundColor('b');
+            
+        }
+        
+        static void ChangeForegroundColor(char input)
+        {
+            switch(input)
             {
                 case 'w':
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case 'y':
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     break;
                 case 'g':
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.YellowGreen;
                     break; 
                 case 'b':
                     Console.ForegroundColor = ConsoleColor.DodgerBlue;
@@ -679,103 +716,44 @@ namespace COMP003A.FinalProject
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     break;
                 case 'r':
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Coral;
                     break;
                 case 'k':
                     Console.ForegroundColor = ConsoleColor.Black;
                     break;
-            }
-            interpolSame(sentence, interpolSpeed); 
-            switch(theme)
-            {
-                case 'w':
-                    Console.ForegroundColor = ConsoleColor.White;
+                case 'l':
+                    Console.ForegroundColor = ConsoleColor.LimeGreen;
                     break;
-                case 'g':
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    break; 
-                case 'b':
-                    Console.ForegroundColor = ConsoleColor.DodgerBlue;
-                    break;
-                case 'c':
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    break;
-                case 'r':
+                case 'd':
                     Console.ForegroundColor = ConsoleColor.Red;
-                    break;
-                case 'k':
-                    Console.ForegroundColor = ConsoleColor.Black;
                     break;
             }
         }
-        /// <summary>
-        /// Changes the color of background and foreground
-        /// </summary>
-        /// <param name="sentence">string input</param>
-        static void ChangeHighlight(string sentence, char theme, char, fore, char back, int interpolSpeed)
+        
+        static void ChangeBackgroundColor(char input)
         {
-            switch(fore)
+            switch(input)
             {
                 case 'w':
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.White;
+                    break;
+                case 'y':
+                    Console.BackgroundColor = ConsoleColor.Yellow;
                     break;
                 case 'g':
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.BackgroundColor = ConsoleColor.YellowGreen;
                     break; 
                 case 'b':
-                    Console.ForegroundColor = ConsoleColor.DodgerBlue;
+                    Console.BackgroundColor = ConsoleColor.DodgerBlue;
                     break;
                 case 'c':
-                    Console.ForegroundColor = ConsoleColor.LightBlue;
+                    Console.BackgroundColor = ConsoleColor.Cyan;
                     break;
                 case 'r':
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.BackgroundColor = ConsoleColor.Coral;
                     break;
                 case 'k':
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    break;
-            }
-            switch(back)
-            {
-                case 'w':
-                    Console.ForegroundColor = ConsoleColor.White;
-                    break;
-                case 'g':
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    break; 
-                case 'b':
-                    Console.ForegroundColor = ConsoleColor.DodgerBlue;
-                    break;
-                case 'c':
-                    Console.ForegroundColor = ConsoleColor.LightBlue;
-                    break;
-                case 'r':
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    break;
-                case 'k':
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    break;
-            }
-            interpolSame(sentence, interpolSpeed); 
-            switch(theme)
-            {
-                case 'w':
-                    Console.ForegroundColor = ConsoleColor.White;
-                    break;
-                case 'g':
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    break; 
-                case 'b':
-                    Console.ForegroundColor = ConsoleColor.DodgerBlue;
-                    break;
-                case 'c':
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    break;
-                case 'r':
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    break;
-                case 'k':
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.Black;
                     break;
             }
         }
