@@ -1,4 +1,4 @@
-﻿/* 
+/* 
  * Author: Matthew Alvarez
  * Course: COMP-003A
  * Purpose: Final Project - An interactive experience building a fictional character
@@ -17,7 +17,7 @@ namespace COMP003A.FinalProject
         static void Main(string[] args)
         {
             string firstName; string lastName; string gender;
-            char skip = '㋛'; char theme = '㋛'; 
+            char skip = '㋛'; char theme = '㋛';
             int age; int birthYear; int height; int weight; int fightYears; int interpolSpeed = 11; int count; int timer;
 
             interpol("Choose a text speed: [S], [N], [F], or [J]  (Slow, Normal, Fast, or Jump) ", interpolSpeed);
@@ -40,49 +40,44 @@ namespace COMP003A.FinalProject
                 }
             }
             Console.WriteLine();
-            interpolSame("Choose a theme: [W] ", interpolSpeed); 
+            interpolSame("Choose a theme: [W] ", interpolSpeed);
             Console.ForegroundColor = ConsoleColor.Yellow; interpolSame("[Y] ", interpolSpeed);
-            Console.ForegroundColor = ConsoleColor.YellowGreen; interpolSame("[G] ", interpolSpeed);
-            Console.ForegroundColor = ConsoleColor.DodgerBlue; interpolSame("[B] ", interpolSpeed);
+            Console.ForegroundColor = ConsoleColor.Blue; interpolSame("[B] ", interpolSpeed);
             Console.ForegroundColor = ConsoleColor.Cyan; interpolSame("[C] ", interpolSpeed);
-            Console.ForegroundColor = ConsoleColor.Coral; interpol("[R] ", interpolSpeed);
+            Console.ForegroundColor = ConsoleColor.Magenta; interpolSame("[M] ", interpolSpeed);
             while (theme == '㋛')
             {
-                switch(Console.ReadKey(true).Key)
+                switch (Console.ReadKey(true).Key)
                 {
-                case ConsoleKey.W:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    theme = 'w';
-                    break;
-                case ConsoleKey.Y:
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    theme = 'y'
-                    break;
-                case ConsoleKey.G:
-                    Console.ForegroundColor = ConsoleColor.YellowGreen;
-                    theme = 'g';
-                    break; 
-                case ConsoleKey.B:
-                    Console.ForegroundColor = ConsoleColor.DodgerBlue;
-                    theme = 'b';
-                    break;
-                case ConsoleKey.C:
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    theme = 'c';
-                    break;
-                case ConsoleKey.R:
-                    Console.ForegroundColor = ConsoleColor.Coral;
-                    theme = 'r';
-                    break;
+                    case ConsoleKey.W:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        theme = 'w';
+                        break;
+                    case ConsoleKey.Y:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        theme = 'y';
+                        break;
+                    case ConsoleKey.B:
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        theme = 'b';
+                        break;
+                    case ConsoleKey.C:
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        theme = 'c';
+                        break;
+                    case ConsoleKey.M:
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        theme = 'm';
+                        break;
                 }
-                Console.WriteLine();
+                Console.WriteLine("\n");
             }
-            
+
             interpol("Welcome to Araevell Kingdom! (When \"->\" appears click [Enter] Key to continue)", interpolSpeed); wait();
             interpol("(Press [Spacebar] to skip to the end of text)", interpolSpeed); wait();
             interpol("Maximize window for best experience.", interpolSpeed); wait();
             interpol("Here, you will create a fictional character based on your preferred characteristics, whether they be fictional or not.", interpolSpeed); wait();
-            
+
             //Skip to assignment.
             interpol("Would you like to skip to the assignment? [Y]/[N]: ", interpolSpeed);
             while (skip == '㋛')
@@ -106,7 +101,7 @@ namespace COMP003A.FinalProject
             if (skip == 'N')
             {
                 // This whole block is mainly narrative
-                printSeparator("Narrative");
+                printSeparator("Narrative", theme);
                 interpol("Beckoning sunlight awakens you. Its color tainted red by stained-glass windows.", interpolSpeed); wait();
                 interpol("You can't remember a thing.", interpolSpeed); wait();
                 interpol("Pain surges from the back of your skull, as each throb hits you like the beat of a drum.", interpolSpeed); wait();
@@ -183,7 +178,7 @@ namespace COMP003A.FinalProject
                 interpolSame("Unknown: ", interpolSpeed); interpol("\"Name's Dagoth, bloody nice to meet you. You may not who I am, but I sure as hell know who you are.\"", interpolSpeed); wait();
                 interpol("He extends his hand to shake yours", interpolSpeed); wait();
                 interpol("(Press [E] to shake his hand)", interpolSpeed);
-                
+
                 //Press E within the given time
                 timer = 0;
                 do
@@ -215,7 +210,7 @@ namespace COMP003A.FinalProject
             /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
             List<string> Answer = new List<string> { }; List<string> Question = new List<string> { };
 
-            printSeparator("Create your character");
+            printSeparator("Create your character", theme);
             //First Name
             interpolSame("Dagoth: ", interpolSpeed); interpol("\"Well? It's only nice to give your own name after I gave mine.\"", interpolSpeed); wait();
             firstName = wordAnswerLoop("\"What is your first name?\"", "\"What foreign tongue is that? I'm gonna need it my language this time.\"", interpolSpeed);
@@ -236,7 +231,7 @@ namespace COMP003A.FinalProject
 
             /* Varied resopnses to age */
             if (age <= 5) { interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{age} this year?! You mean to tell me your a toddler? Come off it!\" ", interpolSpeed); wait(); }  //age <=5
-            else if (age <= 14 && age > 5)  { interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{age} this year?! Your species must age rather quick for that to be true.\" ", interpolSpeed); wait(); } //age <=14
+            else if (age <= 14 && age > 5) { interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{age} this year?! Your species must age rather quick for that to be true.\" ", interpolSpeed); wait(); } //age <=14
             else if (age <= 19 && age > 14) { interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{age} this year? ‘Tis a ripe age for battle!\" ", interpolSpeed); wait(); }  //age <=19
             else if (age <= 39 && age > 19) { interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{age} this year? The way you fought, I wouldn't doubt it. A prime age for fightin'.\" ", interpolSpeed); wait(); }   //age <=39
             else if (age <= 69 && age > 39) { interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{age} this year?! Aged like a fine wine, you did!\" ", interpolSpeed); wait(); } //age <=69
@@ -244,39 +239,39 @@ namespace COMP003A.FinalProject
             else { interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{age} this year?! I’m surprised you fight the way you do with brittle for bones.\" ", interpolSpeed); wait(); } //age >99
 
             //Gender
-            interpolSame("Dagoth: ", interpolSpeed); interpol("\"And I hope I don’t have to remind you about your gender.\"", interpolSpeed); wait();  
+            interpolSame("Dagoth: ", interpolSpeed); interpol("\"And I hope I don’t have to remind you about your gender.\"", interpolSpeed); wait();
             gender = checkGender(interpolSpeed);
 
             //Question 1
             Question.Add("What is your species?");
-            Answer.Add(wordAnswerLoop("\""+Question[0]+"\" (Species: Ex. Human, Elf, Orc, Giant, etc.)", "\"Never heard o' them before, I think your lyin'.\"", interpolSpeed));
+            Answer.Add(wordAnswerLoop("\"" + Question[0] + "\" (Species: Ex. Human, Elf, Orc, Giant, etc.)", "\"Never heard o' them before, I think your lyin'.\"", interpolSpeed));
             interpolSame("Dagoth: ", interpolSpeed); interpol($"\"Ha! A mirror could tell you as well as I. I could tell you're one o’ them {Answer[0]} peoples just by the look of you.\"", interpolSpeed); wait();
 
             //Question 2
             Question.Add("What is your hair color?");
             interpolSame("Dagoth: ", interpolSpeed); interpol("\"But... your hair color... you don’t see many people around here with...that color. What was it called again?\"", interpolSpeed); wait();
-            Answer.Add(wordAnswerLoop("Dagoth: \""+Question[1]+"\"", "Dagoth: \"No, no that's not it, it was somethin' else.\"", interpolSpeed));
-            
+            Answer.Add(wordAnswerLoop("Dagoth: \"" + Question[1] + "\"", "Dagoth: \"No, no that's not it, it was somethin' else.\"", interpolSpeed));
+
             interpolSame("Dagoth: ", interpolSpeed); interpol($"\"You rarely see one of my peoples have {Answer[1]} hair.\"", interpolSpeed); wait();
 
             //Question 3
             Question.Add("What is your eye color?");
             interpolSame("Dagoth: ", interpolSpeed); interpol("\"And the color of your eyes are... it’s hard to see with this little light. What color are those?\"", interpolSpeed); wait();
-            Answer.Add(wordAnswerLoop("\""+Question[2]+"\" ", "\"No, no that's not it, it was somethin' else.\"", interpolSpeed));
+            Answer.Add(wordAnswerLoop("\"" + Question[2] + "\" ", "\"No, no that's not it, it was somethin' else.\"", interpolSpeed));
             interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{Answer[2]}... I see it now. Wait, now that we are standing eye to eye, it seems that you’re a wee bit taller than me.\"", interpolSpeed); wait();
 
             //Question 4
             Question.Add("What is your height in inches?");
-            height = numberAnswerLoop("\""+Question[3]+"\"", interpolSpeed);
+            height = numberAnswerLoop("\"" + Question[3] + "\"", interpolSpeed);
             Answer.Add(Convert.ToString(height));
-            
+
             //checks height
             if (height <= 22) { interpolSame("Dagoth: ", interpolSpeed); interpol("\"Nevermind I must've been seein' things I'm much taller than you\"", interpolSpeed); wait(); } //smallest recorded human
             else { interpolSame("Dagoth: ", interpolSpeed); interpol($"\"Ah, well I’m {height - 2} inches so that would explain why I’m lookin’ up at ya.\"", interpolSpeed); wait(); }
 
             //Question 5
             Question.Add("What is your weight in pounds?");
-            weight = numberAnswerLoop("\""+Question[4]+"\"", interpolSpeed);
+            weight = numberAnswerLoop("\"" + Question[4] + "\"", interpolSpeed);
             Answer.Add(Convert.ToString(weight));
             interpolSame("Dagoth: ", interpolSpeed); interpol($"\"I weigh about 200 pounds, so there’s {Math.Abs(200 - weight)} pound difference between us.\"", interpolSpeed); wait();
 
@@ -286,12 +281,12 @@ namespace COMP003A.FinalProject
 
             //Question 6
             Question.Add("What is your hometown?");
-            Answer.Add(wordAnswerLoop("\""+Question[5]+"\"", "\"Never heard of that place before, maybe you mispoke.\"", interpolSpeed));
+            Answer.Add(wordAnswerLoop("\"" + Question[5] + "\"", "\"Never heard of that place before, maybe you mispoke.\"", interpolSpeed));
             interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{Answer[5]} is many leagues away from this retched place, be thankful for that. Araevell Kingdom is not a place for family and loved ones. \nThe constant battles between the Kreoti Empire and the Shukiar Rebellion have left many without homes to return to.\"", interpolSpeed); wait();
 
             //Question 7
             Question.Add("How many years have you been fighting this war?");
-            fightYears = numberAnswerLoop("\""+Question[6]+"\"", interpolSpeed);
+            fightYears = numberAnswerLoop("\"" + Question[6] + "\"", interpolSpeed);
             //Compares answer to age
             if (fightYears > age)
             {
@@ -301,13 +296,13 @@ namespace COMP003A.FinalProject
                     fightYears = numberAnswerLoop("\"How many years have you been fighting this damned war?\"", interpolSpeed);
                 }
             }
-            else if (fightYears == age) 
-            { 
-                interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{fightYears} years?! Came out the womb swingin’ eh? Much like me. I’ve been fightin’ so long that it feels as though I was born with a dirk in my hand. I was born in the slums of this ‘ere kingdom. That’s why I am so passionate about fighting this war. \"", interpolSpeed); wait(); 
+            else if (fightYears == age)
+            {
+                interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{fightYears} years?! Came out the womb swingin’ eh? Much like me. I’ve been fightin’ so long that it feels as though I was born with a dirk in my hand. I was born in the slums of this ‘ere kingdom. That’s why I am so passionate about fighting this war. \"", interpolSpeed); wait();
             }
-            else 
-            { 
-                interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{fightYears} years, eh? I’ve been fightin’ so long that it feels as though I was born with a dirk in my hand. I was born in the slums of this ‘ere kingdom. That’s why I am so passionate about fighting this war.\"", interpolSpeed); wait(); 
+            else
+            {
+                interpolSame("Dagoth: ", interpolSpeed); interpol($"\"{fightYears} years, eh? I’ve been fightin’ so long that it feels as though I was born with a dirk in my hand. I was born in the slums of this ‘ere kingdom. That’s why I am so passionate about fighting this war.\"", interpolSpeed); wait();
             }
             Answer.Add(Convert.ToString(fightYears));
 
@@ -318,20 +313,20 @@ namespace COMP003A.FinalProject
             //Question 9
             Question.Add("What is your weapon?");
             interpolSame("Dagoth: ", interpolSpeed); interpol("\"Let’s find your weapon, it must be lying around here somewhere, what was it again?\"", interpolSpeed); wait();
-            Answer.Add(wordAnswerLoop("\""+Question[8]+"\"", "\"No, no that wasn't it. It was something more elegant than that.\"", interpolSpeed));
+            Answer.Add(wordAnswerLoop("\"" + Question[8] + "\"", "\"No, no that wasn't it. It was something more elegant than that.\"", interpolSpeed));
             interpolSame("Dagoth: ", interpolSpeed); interpol($"\"Aha! Here it is, a fine weapon indeed. You musn’t part ways with such a beauty! The finest looking {Answer[8]} I’ve ever laid eyes upon.\"", interpolSpeed); wait();
             interpolSame("Dagoth: ", interpolSpeed); interpol($"\"And judging by your weapon, the {Answer[8]}, you must be a... uh... a...\"", interpolSpeed); wait();
 
             //Question 10
             Question.Add("What is your fighter type?");
-            Answer.Add(wordAnswerLoop($"\""+Question[9]+"\" (Fighter Type: Ex. Warlock, Wizard, Warrior, Alchemist, etc.)", "\"Did you come up with that fighting style yourself? Say something I would know.\"", interpolSpeed));
+            Answer.Add(wordAnswerLoop($"\"" + Question[9] + "\" (Fighter Type: Ex. Warlock, Wizard, Warrior, Alchemist, etc.)", "\"Did you come up with that fighting style yourself? Say something I would know.\"", interpolSpeed));
             interpolSame("Dagoth: ", interpolSpeed); interpol($"\"Right, the fiercest {Answer[8]} wieldin' {Answer[8]} I've ever seen.\"", interpolSpeed); wait();
-            
+
             /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
             /*----------------------------------------------------------------------- End of the assignment input -----------------------------------------------------------------------------------*/
             /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-            printSeparator("Narrative");
+            printSeparator("Narrative", theme);
 
             if (skip == 'N')
             {
@@ -357,22 +352,22 @@ namespace COMP003A.FinalProject
             /*---------------------------------------------------------------------------- Profile Summary ------------------------------------------------------------------------------------------*/
             /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-            printSeparator("Profile Summary");
+            printSeparator("Profile Summary", theme);
             interpol($"The great {gender} warrior named {firstName} {lastName}, born in the year {birthYear}, victorious in battle as a {Answer[7]}. The {Answer[0]}, {Answer[1]} of hair and eyes of {Answer[2]}, " +
                 $"\ntall as {Answer[3]} inches and weighed {Answer[4]} pounds. The warrior of the Theoí Máchis was raised in {Answer[5]} and spent over {Answer[6]} years fighting in Araevell Kingdom. " +
                 $"\nThe {Answer[8]} used by the warrior will be buried alongside the great {Answer[9]} when their fight has ended. ", interpolSpeed); wait();
-            
+
             interpol("Profile Summary", interpolSpeed); wait();
             interpol($"Name: {lastName}, {firstName}", interpolSpeed);
             interpol($"Age: {age}", interpolSpeed);
             interpol($"Birth Year: {birthYear}", interpolSpeed);
             //list traversal or iteration
-            for(int i=0; i < Question.Count; i++)
+            for (int i = 0; i < Question.Count; i++)
             {
-                interpol($"Question {i+1}: {Question[i]}", interpolSpeed);
-                interpol($"Answer   {i+1}: {Answer[i]}", interpolSpeed);
+                interpol($"Question {i + 1}: {Question[i]}", interpolSpeed);
+                interpol($"Answer   {i + 1}: {Answer[i]}", interpolSpeed);
             }
-            printSeparator("End of Character Build");
+            printSeparator("End of Character Build", theme);
             Console.ForegroundColor = ConsoleColor.Black;
         }
 
@@ -419,7 +414,7 @@ namespace COMP003A.FinalProject
                 if (checkNumber(answer))
                 {
                     Console.WriteLine();
-                    number= Convert.ToInt32(answer);
+                    number = Convert.ToInt32(answer);
                     return number;
                 }
                 else
@@ -461,7 +456,7 @@ namespace COMP003A.FinalProject
             {
                 return false;
             }
-            if(number < 0) { return false; }
+            if (number < 0) { return false; }
             return true;
         }
         /// <summary>
@@ -554,8 +549,8 @@ namespace COMP003A.FinalProject
                 }
                 if (allegiance == "Neither")
                 {
-                    while (allegiance == "Neither") 
-                    { 
+                    while (allegiance == "Neither")
+                    {
 
                         interpolSame("Dagoth: ", interpolSpeed); interpol("\"Well, which side has been filling your pockets with their coin?\" (Choose a side: Enter [S] or [K] key. {Shukiar Rebellion or Kreoti Empire})", interpolSpeed);
                         switch (Console.ReadKey(true).Key)
@@ -583,32 +578,34 @@ namespace COMP003A.FinalProject
         /// Prints Section Title
         /// </summary>
         /// <param name="sectionTitle">String input</param>
-        static void printSeparator(string sectionTitle)
+        static void printSeparator(string sectionTitle, char theme)
         {
-            int letterCount=0;
-            foreach(char letter in sectionTitle)
+            int letterCount = 0;
+            foreach (char letter in sectionTitle)
             {
-                  letterCount++; 
+                letterCount++;
             }
-            
-            Console.BackgroundColor = ConsoleColor.Yellow;
+
+            ChangeBackgroundColor(theme);
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("".PadRight(100, '-'));
-            if(letterCount%2 == 0)
+            Console.WriteLine("".PadRight(200, '-'));
+            if (letterCount % 2 == 0)
             {
-                for(int i=0; i<50-(letterCount/2); i++;) { Console.Write(" "); }
-                Console.Write($"{sectionTitle}")
-                for(int i=0; i<50-(letterCount/2); i++;) { Console.Write(" "); }
+                for (int i = 0; i < 100 - (letterCount / 2); i++) { Console.Write(" "); }
+                Console.Write($"{sectionTitle}");
+                for (int i = 0; i < 100 - (letterCount / 2); i++) { Console.Write(" "); }
+                Console.WriteLine();
             }
-            else if(letterCount%2 != 0)
+            else if (letterCount % 2 != 0)
             {
-                for(int i=0; i<50-((letterCount+1)/2); i++;) { Console.Write(" "); }
-                Console.Write($"{sectionTitle}")
-                for(int i=0; i<50-(letterCount/2); i++;) { Console.Write(" "); }
+                for (int i = 0; i < 100 - ((letterCount + 1) / 2); i++) { Console.Write(" "); }
+                Console.Write($"{sectionTitle}");
+                for (int i = 0; i < 100 - (letterCount / 2); i++) { Console.Write(" "); }
+                Console.WriteLine();
             }
-            Console.WriteLine("".PadRight(100, '-'));
+            Console.WriteLine("".PadRight(200, '-'));
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            ChangeForegroundColor(theme);
             wait();
         }
         /// <summary>
@@ -677,15 +674,28 @@ namespace COMP003A.FinalProject
                 break;
             } while (Console.ReadKey(true).Key != ConsoleKey.Spacebar);
         }
-        
-        
+
+        /// <summary>
+        /// Changes foreground colors of input
+        /// </summary>
+        /// <param name="sentence">string input</param>
+        /// <param name="theme">char input</param>
+        /// <param name="color">char input</param>
+        /// <param name="interpolSpeed">int input</param>
         static void ChangeWordColor(string sentence, char theme, char color, int interpolSpeed)
         {
-            ChangeForegroundColor(fore);
+            ChangeForegroundColor(color);
             interpolSame(sentence, interpolSpeed);
             ChangeForegroundColor(theme);
         }
-        
+        /// <summary>
+        /// Changes fore and background colors of input
+        /// </summary>
+        /// <param name="sentence"></param>
+        /// <param name="theme"></param>
+        /// <param name="fore"></param>
+        /// <param name="back"></param>
+        /// <param name="interpolSpeed"></param>
         static void ChangeHighlight(string sentence, char theme, char fore, char back, int interpolSpeed)
         {
             ChangeForegroundColor(fore);
@@ -693,12 +703,14 @@ namespace COMP003A.FinalProject
             interpolSame(sentence, interpolSpeed);
             ChangeForegroundColor(theme);
             ChangeBackgroundColor('b');
-            
         }
-        
+        /// <summary>
+        /// Changes foreground color based on input
+        /// </summary>
+        /// <param name="input">character input</param>
         static void ChangeForegroundColor(char input)
         {
-            switch(input)
+            switch (input)
             {
                 case 'w':
                     Console.ForegroundColor = ConsoleColor.White;
@@ -707,32 +719,29 @@ namespace COMP003A.FinalProject
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     break;
                 case 'g':
-                    Console.ForegroundColor = ConsoleColor.YellowGreen;
-                    break; 
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
                 case 'b':
-                    Console.ForegroundColor = ConsoleColor.DodgerBlue;
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     break;
                 case 'c':
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     break;
                 case 'r':
-                    Console.ForegroundColor = ConsoleColor.Coral;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     break;
                 case 'k':
                     Console.ForegroundColor = ConsoleColor.Black;
                     break;
-                case 'l':
-                    Console.ForegroundColor = ConsoleColor.LimeGreen;
-                    break;
-                case 'd':
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    break;
             }
         }
-        
+        /// <summary>
+        /// Changes background color based on input
+        /// </summary>
+        /// <param name="input">character input</param>
         static void ChangeBackgroundColor(char input)
         {
-            switch(input)
+            switch (input)
             {
                 case 'w':
                     Console.BackgroundColor = ConsoleColor.White;
@@ -741,16 +750,16 @@ namespace COMP003A.FinalProject
                     Console.BackgroundColor = ConsoleColor.Yellow;
                     break;
                 case 'g':
-                    Console.BackgroundColor = ConsoleColor.YellowGreen;
-                    break; 
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    break;
                 case 'b':
-                    Console.BackgroundColor = ConsoleColor.DodgerBlue;
+                    Console.BackgroundColor = ConsoleColor.Blue;
                     break;
                 case 'c':
                     Console.BackgroundColor = ConsoleColor.Cyan;
                     break;
                 case 'r':
-                    Console.BackgroundColor = ConsoleColor.Coral;
+                    Console.BackgroundColor = ConsoleColor.Red;
                     break;
                 case 'k':
                     Console.BackgroundColor = ConsoleColor.Black;
